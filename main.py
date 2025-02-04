@@ -89,12 +89,20 @@ def decompress(binary_code, codes):
     return decoded_text
 
 
-def calculate_compression_ratio(original_text, compressed_text):
-    """Calcula a razão de compressão."""
-    original_size = len(original_text) * \
-        8  # Cada caractere geralmente ocupa 8 bits
-    compressed_size = len(compressed_text) * 8
-    return original_size / compressed_size if compressed_size > 0 else float('inf')
+def calculate_compression_ratio(texto_original, codigo_binario):
+    # Número total de bits após compressão
+    total_bits = len(codigo_binario)
+
+    # Número de símbolos na mensagem original
+    numero_simbolos = len(texto_original)
+
+    # Número médio de bits por símbolo
+    numero_medio_bits_por_simbolo = total_bits / numero_simbolos
+
+    # Calcular a razão de compressão
+    razao_compressao = 5 / numero_medio_bits_por_simbolo
+
+    return razao_compressao
 
 
 def save_to_file(filename, content):
@@ -124,15 +132,15 @@ decompressed_text = decompress(compressed_text, codes)
 
 save_to_file("original.txt", original_text.encode())
 
-# # Calcular razão de compressão
-# compression_ratio = calculate_compression_ratio(original_text, compressed_text)
+# Calcular razão de compressão
+compression_ratio = calculate_compression_ratio(original_text, compressed_text)
 
 # Resultados
-# print("Códigos Shannon-Fano:")
-# for symbol, code in codes.items():
-#     print(f"{symbol}: {code}")
+print("Códigos Shannon-Fano:")
+for symbol, code in codes.items():
+    print(f"{symbol}: {code}")
 
 print("\nTexto original:", original_text)
 print("Texto comprimido:", compressed_text)
 print("Texto descomprimido:", decompressed_text)
-# print("Razão de compressão:", compression_ratio)
+print("Razão de compressão:", compression_ratio)
