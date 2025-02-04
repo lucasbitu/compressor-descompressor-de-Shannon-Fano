@@ -125,6 +125,22 @@ def calcular_taxa_compressao(texto_original, codigo_binario):
     return taxa_compressao
 
 
+def verificar_tamanho_arquivos():
+    """
+    Verifica o tamanho dos arquivos gerados e exibe o resultado.
+    """
+    arquivo_original = "original.txt"
+    arquivo_comprimido = "comprimido.bin"
+
+    tamanho_original = os.path.getsize(
+        arquivo_original) if os.path.exists(arquivo_original) else 0
+    tamanho_comprimido = os.path.getsize(
+        arquivo_comprimido) if os.path.exists(arquivo_comprimido) else 0
+
+    print(f"Tamanho do arquivo original: {tamanho_original} bytes")
+    print(f"Tamanho do arquivo comprimido: {tamanho_comprimido} bytes")
+
+
 def salvar_arquivo(nome_arquivo, conteudo):
     with open(nome_arquivo, "wb") as arquivo:
         arquivo.write(conteudo)
@@ -165,3 +181,5 @@ print("\nTexto original:", texto_original)
 print("Texto comprimido:", texto_comprimido)
 print("Texto descomprimido:", texto_descomprimido)
 print("Taxa de compressão:", taxa_compressao)
+# Chamada da função para exibir os tamanhos
+verificar_tamanho_arquivos()
