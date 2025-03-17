@@ -160,7 +160,7 @@ simbolos_frequencias = [
 codigos = codificacao_shannon_fano(simbolos_frequencias)
 
 # Texto para teste
-texto_original = "LUCAS FREITAS BITU SATIRO CRATO CEARA"
+texto_original = "JAQUIM BRENO BRITO CAVALCANTE JUAZEIRO DO NORTE CEARA"
 
 # Compressão
 bits_extra = comprimir_texto(texto_original, codigos)
