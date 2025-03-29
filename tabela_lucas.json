@@ -1,0 +1,394 @@
+-1: defaultdict(<function nested_defaultdict.<locals>.<lambda> at 0x10330dee0>,
+{'NO_CONTEXT': defaultdict(<class 'int'>,
+    {'b': 1, 'c': 1, 'd': 1, 'e': 1, 'f': 1, 'g': 1, 'h': 1, 'i': 1, 'j': 1, 'k': 1, 'l': 1, 'm': 1, 'n': 1, 'o': 1, 'p': 1, 'q': 1, 'r': 1, 's': 1, 't': 1, 'u': 1, 'v': 1, 'w': 1, 'x': 1, 'y': 1, 'z': 1, ' ': 1
+    })
+}),
+0: defaultdict(<function nested_defaultdict.<locals>.<lambda> at 0x10330e5c0>,
+{'NO_CONTEXT': defaultdict(<class 'int'>,
+    {'a': 1, 'ç': 1
+    })
+}),
+1: defaultdict(<function nested_defaultdict.<locals>.<lambda> at 0x10330e660>,
+{}),
+2: defaultdict(<function nested_defaultdict.<locals>.<lambda> at 0x10330e700>,
+{})
+}
+{
+-1: defaultdict(<function nested_defaultdict.<locals>.<lambda> at 0x10330dee0>,
+{'NO_CONTEXT': defaultdict(<class 'int'>,
+    {'c': 1, 'd': 1, 'e': 1, 'f': 1, 'g': 1, 'h': 1, 'i': 1, 'j': 1, 'k': 1, 'l': 1, 'm': 1, 'n': 1, 'o': 1, 'p': 1, 'q': 1, 'r': 1, 's': 1, 't': 1, 'u': 1, 'v': 1, 'w': 1, 'x': 1, 'y': 1, 'z': 1, ' ': 1
+    })
+}),
+0: defaultdict(<function nested_defaultdict.<locals>.<lambda> at 0x10330e5c0>,
+{'NO_CONTEXT': defaultdict(<class 'int'>,
+    {'a': 1, 'ç': 2, 'b': 1
+    })
+}),
+1: defaultdict(<function nested_defaultdict.<locals>.<lambda> at 0x10330e660>,
+{'a': defaultdict(<class 'int'>,
+    {'b': 1, 'ç': 1
+    })
+}),
+2: defaultdict(<function nested_defaultdict.<locals>.<lambda> at 0x10330e700>,
+{})
+}
+{
+-1: defaultdict(<function nested_defaultdict.<locals>.<lambda> at 0x10330dee0>,
+{'NO_CONTEXT': defaultdict(<class 'int'>,
+    {'c': 1, 'd': 1, 'e': 1, 'f': 1, 'g': 1, 'h': 1, 'i': 1, 'j': 1, 'k': 1, 'l': 1, 'm': 1, 'n': 1, 'o': 1, 'p': 1, 'q': 1, 's': 1, 't': 1, 'u': 1, 'v': 1, 'w': 1, 'x': 1, 'y': 1, 'z': 1, ' ': 1
+    })
+}),
+0: defaultdict(<function nested_defaultdict.<locals>.<lambda> at 0x10330e5c0>,
+{'NO_CONTEXT': defaultdict(<class 'int'>,
+    {'a': 1, 'ç': 3, 'b': 1, 'r': 1
+    })
+}),
+1: defaultdict(<function nested_defaultdict.<locals>.<lambda> at 0x10330e660>,
+{'a': defaultdict(<class 'int'>,
+    {'b': 1, 'ç': 1
+    }), 'b': defaultdict(<class 'int'>,
+    {'r': 1, 'ç': 1
+    })
+}),
+2: defaultdict(<function nested_defaultdict.<locals>.<lambda> at 0x10330e700>,
+{'ba': defaultdict(<class 'int'>,
+    {'r': 1, 'ç': 1
+    })
+})
+}
+{
+-1: defaultdict(<function nested_defaultdict.<locals>.<lambda> at 0x10330dee0>,
+{'NO_CONTEXT': defaultdict(<class 'int'>,
+    {'c': 1, 'd': 1, 'e': 1, 'f': 1, 'g': 1, 'h': 1, 'i': 1, 'j': 1, 'k': 1, 'l': 1, 'm': 1, 'n': 1, 'o': 1, 'p': 1, 'q': 1, 's': 1, 't': 1, 'u': 1, 'v': 1, 'w': 1, 'x': 1, 'y': 1, 'z': 1, ' ': 1
+    })
+}),
+0: defaultdict(<function nested_defaultdict.<locals>.<lambda> at 0x10330e5c0>,
+{'NO_CONTEXT': defaultdict(<class 'int'>,
+    {'a': 2, 'ç': 3, 'b': 1, 'r': 1
+    })
+}),
+1: defaultdict(<function nested_defaultdict.<locals>.<lambda> at 0x10330e660>,
+{'a': defaultdict(<class 'int'>,
+    {'b': 1, 'ç': 1
+    }), 'b': defaultdict(<class 'int'>,
+    {'r': 1, 'ç': 1
+    }), 'r': defaultdict(<class 'int'>,
+    {'a': 1, 'ç': 1
+    })
+}),
+2: defaultdict(<function nested_defaultdict.<locals>.<lambda> at 0x10330e700>,
+{'ba': defaultdict(<class 'int'>,
+    {'r': 1, 'ç': 1
+    }), 'rb': defaultdict(<class 'int'>,
+    {'a': 1, 'ç': 1
+    })
+})
+}
+{
+-1: defaultdict(<function nested_defaultdict.<locals>.<lambda> at 0x10330dee0>,
+{'NO_CONTEXT': defaultdict(<class 'int'>,
+    {'d': 1, 'e': 1, 'f': 1, 'g': 1, 'h': 1, 'i': 1, 'j': 1, 'k': 1, 'l': 1, 'm': 1, 'n': 1, 'o': 1, 'p': 1, 'q': 1, 's': 1, 't': 1, 'u': 1, 'v': 1, 'w': 1, 'x': 1, 'y': 1, 'z': 1, ' ': 1
+    })
+}),
+0: defaultdict(<function nested_defaultdict.<locals>.<lambda> at 0x10330e5c0>,
+{'NO_CONTEXT': defaultdict(<class 'int'>,
+    {'a': 2, 'ç': 4, 'b': 1, 'r': 1, 'c': 1
+    })
+}),
+1: defaultdict(<function nested_defaultdict.<locals>.<lambda> at 0x10330e660>,
+{'a': defaultdict(<class 'int'>,
+    {'b': 1, 'ç': 2, 'c': 1
+    }), 'b': defaultdict(<class 'int'>,
+    {'r': 1, 'ç': 1
+    }), 'r': defaultdict(<class 'int'>,
+    {'a': 1, 'ç': 1
+    })
+}),
+2: defaultdict(<function nested_defaultdict.<locals>.<lambda> at 0x10330e700>,
+{'ba': defaultdict(<class 'int'>,
+    {'r': 1, 'ç': 1
+    }), 'rb': defaultdict(<class 'int'>,
+    {'a': 1, 'ç': 1
+    }), 'ar': defaultdict(<class 'int'>,
+    {'c': 1, 'ç': 1
+    })
+})
+}
+{
+-1: defaultdict(<function nested_defaultdict.<locals>.<lambda> at 0x10330dee0>,
+{'NO_CONTEXT': defaultdict(<class 'int'>,
+    {'d': 1, 'e': 1, 'f': 1, 'g': 1, 'h': 1, 'i': 1, 'j': 1, 'k': 1, 'l': 1, 'm': 1, 'n': 1, 'o': 1, 'p': 1, 'q': 1, 's': 1, 't': 1, 'u': 1, 'v': 1, 'w': 1, 'x': 1, 'y': 1, 'z': 1, ' ': 1
+    })
+}),
+0: defaultdict(<function nested_defaultdict.<locals>.<lambda> at 0x10330e5c0>,
+{'NO_CONTEXT': defaultdict(<class 'int'>,
+    {'a': 3, 'ç': 4, 'b': 1, 'r': 1, 'c': 1
+    })
+}),
+1: defaultdict(<function nested_defaultdict.<locals>.<lambda> at 0x10330e660>,
+{'a': defaultdict(<class 'int'>,
+    {'b': 1, 'ç': 2, 'c': 1
+    }), 'b': defaultdict(<class 'int'>,
+    {'r': 1, 'ç': 1
+    }), 'r': defaultdict(<class 'int'>,
+    {'a': 1, 'ç': 1
+    }), 'c': defaultdict(<class 'int'>,
+    {'a': 1, 'ç': 1
+    })
+}),
+2: defaultdict(<function nested_defaultdict.<locals>.<lambda> at 0x10330e700>,
+{'ba': defaultdict(<class 'int'>,
+    {'r': 1, 'ç': 1
+    }), 'rb': defaultdict(<class 'int'>,
+    {'a': 1, 'ç': 1
+    }), 'ar': defaultdict(<class 'int'>,
+    {'c': 1, 'ç': 1
+    }), 'ca': defaultdict(<class 'int'>,
+    {'a': 1, 'ç': 1
+    })
+})
+}
+{
+-1: defaultdict(<function nested_defaultdict.<locals>.<lambda> at 0x10330dee0>,
+{'NO_CONTEXT': defaultdict(<class 'int'>,
+    {'e': 1, 'f': 1, 'g': 1, 'h': 1, 'i': 1, 'j': 1, 'k': 1, 'l': 1, 'm': 1, 'n': 1, 'o': 1, 'p': 1, 'q': 1, 's': 1, 't': 1, 'u': 1, 'v': 1, 'w': 1, 'x': 1, 'y': 1, 'z': 1, ' ': 1
+    })
+}),
+0: defaultdict(<function nested_defaultdict.<locals>.<lambda> at 0x10330e5c0>,
+{'NO_CONTEXT': defaultdict(<class 'int'>,
+    {'a': 3, 'ç': 5, 'b': 1, 'r': 1, 'c': 1, 'd': 1
+    })
+}),
+1: defaultdict(<function nested_defaultdict.<locals>.<lambda> at 0x10330e660>,
+{'a': defaultdict(<class 'int'>,
+    {'b': 1, 'ç': 3, 'c': 1, 'd': 1
+    }), 'b': defaultdict(<class 'int'>,
+    {'r': 1, 'ç': 1
+    }), 'r': defaultdict(<class 'int'>,
+    {'a': 1, 'ç': 1
+    }), 'c': defaultdict(<class 'int'>,
+    {'a': 1, 'ç': 1
+    })
+}),
+2: defaultdict(<function nested_defaultdict.<locals>.<lambda> at 0x10330e700>,
+{'ba': defaultdict(<class 'int'>,
+    {'r': 1, 'ç': 1
+    }), 'rb': defaultdict(<class 'int'>,
+    {'a': 1, 'ç': 1
+    }), 'ar': defaultdict(<class 'int'>,
+    {'c': 1, 'ç': 1
+    }), 'ca': defaultdict(<class 'int'>,
+    {'a': 1, 'ç': 1
+    }), 'ac': defaultdict(<class 'int'>,
+    {'d': 1, 'ç': 1
+    })
+})
+}
+{
+-1: defaultdict(<function nested_defaultdict.<locals>.<lambda> at 0x10330dee0>,
+{'NO_CONTEXT': defaultdict(<class 'int'>,
+    {'e': 1, 'f': 1, 'g': 1, 'h': 1, 'i': 1, 'j': 1, 'k': 1, 'l': 1, 'm': 1, 'n': 1, 'o': 1, 'p': 1, 'q': 1, 's': 1, 't': 1, 'u': 1, 'v': 1, 'w': 1, 'x': 1, 'y': 1, 'z': 1, ' ': 1
+    })
+}),
+0: defaultdict(<function nested_defaultdict.<locals>.<lambda> at 0x10330e5c0>,
+{'NO_CONTEXT': defaultdict(<class 'int'>,
+    {'a': 4, 'ç': 5, 'b': 1, 'r': 1, 'c': 1, 'd': 1
+    })
+}),
+1: defaultdict(<function nested_defaultdict.<locals>.<lambda> at 0x10330e660>,
+{'a': defaultdict(<class 'int'>,
+    {'b': 1, 'ç': 3, 'c': 1, 'd': 1
+    }), 'b': defaultdict(<class 'int'>,
+    {'r': 1, 'ç': 1
+    }), 'r': defaultdict(<class 'int'>,
+    {'a': 1, 'ç': 1
+    }), 'c': defaultdict(<class 'int'>,
+    {'a': 1, 'ç': 1
+    }), 'd': defaultdict(<class 'int'>,
+    {'a': 1, 'ç': 1
+    })
+}),
+2: defaultdict(<function nested_defaultdict.<locals>.<lambda> at 0x10330e700>,
+{'ba': defaultdict(<class 'int'>,
+    {'r': 1, 'ç': 1
+    }), 'rb': defaultdict(<class 'int'>,
+    {'a': 1, 'ç': 1
+    }), 'ar': defaultdict(<class 'int'>,
+    {'c': 1, 'ç': 1
+    }), 'ca': defaultdict(<class 'int'>,
+    {'a': 1, 'ç': 1
+    }), 'ac': defaultdict(<class 'int'>,
+    {'d': 1, 'ç': 1
+    }), 'da': defaultdict(<class 'int'>,
+    {'a': 1, 'ç': 1
+    })
+})
+}
+{
+-1: defaultdict(<function nested_defaultdict.<locals>.<lambda> at 0x10330dee0>,
+{'NO_CONTEXT': defaultdict(<class 'int'>,
+    {'e': 1, 'f': 1, 'g': 1, 'h': 1, 'i': 1, 'j': 1, 'k': 1, 'l': 1, 'm': 1, 'n': 1, 'o': 1, 'p': 1, 'q': 1, 's': 1, 't': 1, 'u': 1, 'v': 1, 'w': 1, 'x': 1, 'y': 1, 'z': 1, ' ': 1
+    })
+}),
+0: defaultdict(<function nested_defaultdict.<locals>.<lambda> at 0x10330e5c0>,
+{'NO_CONTEXT': defaultdict(<class 'int'>,
+    {'a': 4, 'ç': 5, 'b': 2, 'r': 1, 'c': 1, 'd': 1
+    })
+}),
+1: defaultdict(<function nested_defaultdict.<locals>.<lambda> at 0x10330e660>,
+{'a': defaultdict(<class 'int'>,
+    {'b': 2, 'ç': 3, 'c': 1, 'd': 1
+    }), 'b': defaultdict(<class 'int'>,
+    {'r': 1, 'ç': 1
+    }), 'r': defaultdict(<class 'int'>,
+    {'a': 1, 'ç': 1
+    }), 'c': defaultdict(<class 'int'>,
+    {'a': 1, 'ç': 1
+    }), 'd': defaultdict(<class 'int'>,
+    {'a': 1, 'ç': 1
+    })
+}),
+2: defaultdict(<function nested_defaultdict.<locals>.<lambda> at 0x10330e700>,
+{'ba': defaultdict(<class 'int'>,
+    {'r': 1, 'ç': 1
+    }), 'rb': defaultdict(<class 'int'>,
+    {'a': 1, 'ç': 1
+    }), 'ar': defaultdict(<class 'int'>,
+    {'c': 1, 'ç': 1
+    }), 'ca': defaultdict(<class 'int'>,
+    {'a': 1, 'ç': 1
+    }), 'ac': defaultdict(<class 'int'>,
+    {'d': 1, 'ç': 1
+    }), 'da': defaultdict(<class 'int'>,
+    {'a': 1, 'ç': 1
+    }), 'ad': defaultdict(<class 'int'>,
+    {'b': 1, 'ç': 1
+    })
+})
+}
+{
+-1: defaultdict(<function nested_defaultdict.<locals>.<lambda> at 0x10330dee0>,
+{'NO_CONTEXT': defaultdict(<class 'int'>,
+    {'e': 1, 'f': 1, 'g': 1, 'h': 1, 'i': 1, 'j': 1, 'k': 1, 'l': 1, 'm': 1, 'n': 1, 'o': 1, 'p': 1, 'q': 1, 's': 1, 't': 1, 'u': 1, 'v': 1, 'w': 1, 'x': 1, 'y': 1, 'z': 1, ' ': 1
+    })
+}),
+0: defaultdict(<function nested_defaultdict.<locals>.<lambda> at 0x10330e5c0>,
+{'NO_CONTEXT': defaultdict(<class 'int'>,
+    {'a': 4, 'ç': 5, 'b': 2, 'r': 2, 'c': 1, 'd': 1
+    })
+}),
+1: defaultdict(<function nested_defaultdict.<locals>.<lambda> at 0x10330e660>,
+{'a': defaultdict(<class 'int'>,
+    {'b': 2, 'ç': 3, 'c': 1, 'd': 1
+    }), 'b': defaultdict(<class 'int'>,
+    {'r': 2, 'ç': 1
+    }), 'r': defaultdict(<class 'int'>,
+    {'a': 1, 'ç': 1
+    }), 'c': defaultdict(<class 'int'>,
+    {'a': 1, 'ç': 1
+    }), 'd': defaultdict(<class 'int'>,
+    {'a': 1, 'ç': 1
+    })
+}),
+2: defaultdict(<function nested_defaultdict.<locals>.<lambda> at 0x10330e700>,
+{'ba': defaultdict(<class 'int'>,
+    {'r': 2, 'ç': 1
+    }), 'rb': defaultdict(<class 'int'>,
+    {'a': 1, 'ç': 1
+    }), 'ar': defaultdict(<class 'int'>,
+    {'c': 1, 'ç': 1
+    }), 'ca': defaultdict(<class 'int'>,
+    {'a': 1, 'ç': 1
+    }), 'ac': defaultdict(<class 'int'>,
+    {'d': 1, 'ç': 1
+    }), 'da': defaultdict(<class 'int'>,
+    {'a': 1, 'ç': 1
+    }), 'ad': defaultdict(<class 'int'>,
+    {'b': 1, 'ç': 1
+    })
+})
+}
+{
+-1: defaultdict(<function nested_defaultdict.<locals>.<lambda> at 0x10330dee0>,
+{'NO_CONTEXT': defaultdict(<class 'int'>,
+    {'e': 1, 'f': 1, 'g': 1, 'h': 1, 'i': 1, 'j': 1, 'k': 1, 'l': 1, 'm': 1, 'n': 1, 'o': 1, 'p': 1, 'q': 1, 's': 1, 't': 1, 'u': 1, 'v': 1, 'w': 1, 'x': 1, 'y': 1, 'z': 1, ' ': 1
+    })
+}),
+0: defaultdict(<function nested_defaultdict.<locals>.<lambda> at 0x10330e5c0>,
+{'NO_CONTEXT': defaultdict(<class 'int'>,
+    {'a': 5, 'ç': 5, 'b': 2, 'r': 2, 'c': 1, 'd': 1
+    })
+}),
+1: defaultdict(<function nested_defaultdict.<locals>.<lambda> at 0x10330e660>,
+{'a': defaultdict(<class 'int'>,
+    {'b': 2, 'ç': 3, 'c': 1, 'd': 1
+    }), 'b': defaultdict(<class 'int'>,
+    {'r': 2, 'ç': 1
+    }), 'r': defaultdict(<class 'int'>,
+    {'a': 2, 'ç': 1
+    }), 'c': defaultdict(<class 'int'>,
+    {'a': 1, 'ç': 1
+    }), 'd': defaultdict(<class 'int'>,
+    {'a': 1, 'ç': 1
+    })
+}),
+2: defaultdict(<function nested_defaultdict.<locals>.<lambda> at 0x10330e700>,
+{'ba': defaultdict(<class 'int'>,
+    {'r': 2, 'ç': 1
+    }), 'rb': defaultdict(<class 'int'>,
+    {'a': 2, 'ç': 1
+    }), 'ar': defaultdict(<class 'int'>,
+    {'c': 1, 'ç': 1
+    }), 'ca': defaultdict(<class 'int'>,
+    {'a': 1, 'ç': 1
+    }), 'ac': defaultdict(<class 'int'>,
+    {'d': 1, 'ç': 1
+    }), 'da': defaultdict(<class 'int'>,
+    {'a': 1, 'ç': 1
+    }), 'ad': defaultdict(<class 'int'>,
+    {'b': 1, 'ç': 1
+    })
+})
+}
+{
+-1: defaultdict(<function nested_defaultdict.<locals>.<lambda> at 0x10330dee0>,
+{'NO_CONTEXT': defaultdict(<class 'int'>,
+    {'e': 1, 'f': 1, 'g': 1, 'h': 1, 'i': 1, 'j': 1, 'k': 1, 'l': 1, 'm': 1, 'n': 1, 'o': 1, 'p': 1, 'q': 1, 's': 1, 't': 1, 'u': 1, 'v': 1, 'w': 1, 'x': 1, 'y': 1, 'z': 1, ' ': 1
+    })
+}),
+0: defaultdict(<function nested_defaultdict.<locals>.<lambda> at 0x10330e5c0>,
+{'NO_CONTEXT': defaultdict(<class 'int'>,
+    {'a': 5, 'ç': 6, 'b': 2, 'r': 2, 'c': 1, 'd': 1, '\n': 1
+    })
+}),
+1: defaultdict(<function nested_defaultdict.<locals>.<lambda> at 0x10330e660>,
+{'a': defaultdict(<class 'int'>,
+    {'b': 2, 'ç': 4, 'c': 1, 'd': 1, '\n': 1
+    }), 'b': defaultdict(<class 'int'>,
+    {'r': 2, 'ç': 1
+    }), 'r': defaultdict(<class 'int'>,
+    {'a': 2, 'ç': 1
+    }), 'c': defaultdict(<class 'int'>,
+    {'a': 1, 'ç': 1
+    }), 'd': defaultdict(<class 'int'>,
+    {'a': 1, 'ç': 1
+    })
+}),
+2: defaultdict(<function nested_defaultdict.<locals>.<lambda> at 0x10330e700>,
+{'ba': defaultdict(<class 'int'>,
+    {'r': 2, 'ç': 1
+    }), 'rb': defaultdict(<class 'int'>,
+    {'a': 2, 'ç': 1
+    }), 'ar': defaultdict(<class 'int'>,
+    {'c': 1, 'ç': 2, '\n': 1
+    }), 'ca': defaultdict(<class 'int'>,
+    {'a': 1, 'ç': 1
+    }), 'ac': defaultdict(<class 'int'>,
+    {'d': 1, 'ç': 1
+    }), 'da': defaultdict(<class 'int'>,
+    {'a': 1, 'ç': 1
+    }), 'ad': defaultdict(<class 'int'>,
+    {'b': 1, 'ç': 1
+    })
+})
+}

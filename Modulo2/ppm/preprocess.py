@@ -6,7 +6,7 @@ def preprocess_text(file_path, output_path):
     with open(file_path, "r", encoding="utf-8") as f:
         text = f.read()
 
-    # Substituir quebras de linha por espaços
+    # Substituir quebras de linha por _
     text = text.replace("\n", " ")
 
     # Remover acentos e normalizar caracteres
@@ -19,7 +19,7 @@ def preprocess_text(file_path, output_path):
 
     # Remover espaços extras
     text = re.sub(r"\s+", " ", text).strip()
-
+    text = text.replace(" ", "_")
     with open(output_path, "w", encoding="utf-8") as f:
         f.write(text)
 
