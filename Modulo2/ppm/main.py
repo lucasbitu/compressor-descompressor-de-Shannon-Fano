@@ -2,7 +2,7 @@ from app import PPMApp
 
 def main():
     # Valores configuráveis
-    K_MAX = 2
+    K_MAX = 1
     INPUT_FILE = '/Users/moises/Documents/iti/Modulo2/ppm/data/abracadabra.txt'
     
     # Criação e execução da aplicação
