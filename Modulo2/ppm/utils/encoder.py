@@ -109,7 +109,7 @@ def generate_huffman_codes(node, prefix="", codebook={}):
 def huffman_encoding(frequency_dict, verbose=True):
     if not frequency_dict:
         return {}
-    
+
     tree_root = build_huffman_tree(frequency_dict, verbose)
     codes = generate_huffman_codes(tree_root, "", {})
     return codes
@@ -117,10 +117,6 @@ def huffman_encoding(frequency_dict, verbose=True):
 def codificar_ppm(ppm_structure, k, context, char, ignore_chars, verbose=False):
     # Implementação da decodificação PPM (não fornecida no código original)
     freq_dict = {}
-    
-    if len(freq_dict) == 1:
-            # Se o dicionário estiver vazio, retorna None
-            return None
         
     if k == -1:
 
@@ -130,6 +126,34 @@ def codificar_ppm(ppm_structure, k, context, char, ignore_chars, verbose=False):
         contexts_dict = ppm_structure[k]["NO_CONTEXT"].char_counts
             
         freq_dict = {c: count for c, count in contexts_dict.items() if c not in ignore_chars}
+            
+        if len(freq_dict) == 1:
+            # Se o dicionário estiver vazio, retorna None
+            return None
+
+        codes = huffman_encoding(freq_dict, verbose)
+    else:
+        contexts_dict = ppm_structure[k][context].char_counts
+            
+        freq_dict = {c: count for c, count in contexts_dict.items() if c not in ignore_chars}
+        if len(freq_dict) == 1:
+            # Se o dicionário estiver vazio, retorna None
+            return None
+        codes = huffman_encoding(freq_dict, verbose)
+
+    return codes.get(char, None)
+
+def decodificar_ppm(ppm_structure, k, context, code, ignore_chars, verbose=False):
+    freq_dict = {}
+    
+    if k == -1:
+        contexts_dict = ppm_structure[k]["NO_CONTEXT"].char_counts
+        codes = equiprovable_huffman(contexts_dict)
+    elif k == 0:
+        contexts_dict = ppm_structure[k]["NO_CONTEXT"].char_counts
+
+        freq_dict = {c: count for c, count in contexts_dict.items() if c not in ignore_chars}
+        
         codes = huffman_encoding(freq_dict, verbose)
     else:
         contexts_dict = ppm_structure[k][context].char_counts
@@ -137,5 +161,4 @@ def codificar_ppm(ppm_structure, k, context, char, ignore_chars, verbose=False):
         freq_dict = {c: count for c, count in contexts_dict.items() if c not in ignore_chars}
         codes = huffman_encoding(freq_dict, verbose)
 
-    return codes.get(char, None)
-
+    return codes, codes.get(code, None)

@@ -1,7 +1,8 @@
 from typing import List, Dict, Tuple, Any
 from models.ppm_model import PPMModel
 from models.context import Context
-from utils.encoder import huffman_encoding, equiprovable_huffman
+from utils.encoder import decodificar_ppm
+import math
 
 class PPMDecoder:
     """Decodificador para o modelo PPM (Prediction by Partial Matching)."""
@@ -16,6 +17,8 @@ class PPMDecoder:
         self.structure = {k: {} for k in range(-1, k_max + 1)}
         self.ignore_chars = set()
         self.discarded_chars = []
+        self.alphabet = "abcdr"
+        ## self.alphabet = string.ascii_lowercase
         self.initialize_alphabet()
     
     def initialize_alphabet(self):
@@ -23,48 +26,22 @@ class PPMDecoder:
         self.structure[-1]["NO_CONTEXT"] = Context()
         for letra in "abcdr":
             self.structure[-1]["NO_CONTEXT"].add_character(letra)
+        ## self.structure[-1]["NO_CONTEXT"].add_character("_")
+    
     
     def decode_sequence(self, encoded_data: str) -> str:
         """Decodifica uma sequência de bits concatenada."""
-        decoded_text = ""
-        self.discarded_chars = []
-        pos = 0
+        context_stack = []
+        k_def = self.k_max
+        num_chars = len(self.alphabet) + 1 ## +1 para o espaço
+        x_bits = math.ceil(math.log2(num_chars))
+        encoded_data = encoded_data[0:x_bits]
+        decoded_data = decodificar_ppm(self.structure, -1, "NO_CONTEXT", encoded_data, {}, False)
+        if not decoded_data:
+            raise ValueError("Erro ao decodificar o contexto")
         
-        while pos < len(encoded_data):
-            # Decodifica o próximo caractere
-            char, bits_used = self.decode_next_character(encoded_data[pos:])
+        print(f"Contexto: {context_stack}")
             
-            if char and bits_used > 0:
-                if self.verbose:
-                    print(f"Decodificado: '{char}' usando {bits_used} bits")
+        for bit in encoded_data[x_bits:]:
                 
-                # Se for um caractere normal (não escape), adiciona ao texto
-                if char != self.esc_symbol:
-                    decoded_text += char
-                    # Atualiza pilha de contexto
-                    self.discarded_chars.insert(0, char)
-                    if len(self.discarded_chars) > self.k_max:
-                        self.discarded_chars.pop()
-                    
-                    if self.verbose:
-                        print(f"Texto atual: '{decoded_text}'")
-                        print(f"Pilha de contexto: {self.discarded_chars}")
-                else:
-                    if self.verbose:
-                        print(f"Encontrado símbolo de escape")
                 
-                # Atualiza o modelo com o caractere decodificado
-                self.update_model(char)
-                
-                # Avança na string de bits
-                pos += bits_used
-                
-                # Limpa caracteres ignorados
-                self.ignore_chars = set()
-            else:
-                # Se não conseguiu decodificar, avança um bit
-                pos += 1
-                if self.verbose:
-                    print(f"Não conseguiu decodificar na posição {pos-1}")
-        
-        return decoded_text

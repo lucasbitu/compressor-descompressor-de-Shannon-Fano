@@ -14,17 +14,15 @@ class PPMModel:
         self.esc_symbol = 'ç'  # Símbolo de escape (ro)
         self.encoded_bits = []  # Lista para armazenar os bits codificados
         self.verbose = verbose
+        #self.alphabet = string.ascii_lowercase + "_"
+        self.alphabet = "abcdr"
         self.initialize_alphabet()
     
     def initialize_alphabet(self):
         """Inicializa o modelo com o alfabeto para k=-1."""
         self.structure[-1]["NO_CONTEXT"] = Context()
-        # Adiciona todas as letras minúsculas
-        #for letra in string.ascii_lowercase:
-        for letra in "abcdr":
+        for letra in self.alphabet:
             self.structure[-1]["NO_CONTEXT"].add_character(letra)
-        # Adiciona o espaço
-        # self.structure[-1]["NO_CONTEXT"].add_character("_")
     
     def get_context(self, k: int, context_str: str) -> Context:
         """Retorna o contexto para um determinado k e string de contexto."""
@@ -35,9 +33,7 @@ class PPMModel:
     
     def is_context_complete(self, context: Context) -> bool:
         """Verifica se um contexto contém todos os símbolos do alfabeto incluindo espaço."""
-        # alphabet = set(string.ascii_lowercase)
-        alphabet = set(["a", "b", "c", "d", "r"])
-        # alphabet.add("_")  # Adiciona o espaço
+        alphabet = set(self.alphabet)
         context_chars = context.get_characters()
         return alphabet.issubset(context_chars)
     
