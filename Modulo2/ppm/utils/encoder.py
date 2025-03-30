@@ -121,6 +121,8 @@ def codificar_ppm(ppm_structure, k, context, char, ignore_chars, verbose=False):
     if k == -1:
 
         contexts_dict = ppm_structure[k]["NO_CONTEXT"].char_counts
+        if len(contexts_dict) == 1:
+            return None
         codes = equiprovable_huffman(contexts_dict)
     elif k == 0:
         contexts_dict = ppm_structure[k]["NO_CONTEXT"].char_counts
