@@ -65,7 +65,7 @@ def huffman_encoding(frequency_dict, verbose=True):
     codes = generate_huffman_codes(tree_root, "", {})
     return codes
 
-def decodificar_ppm(ppm_structure, k, context, char, ignore_chars, verbose=False):
+def codificar_ppm(ppm_structure, k, context, char, ignore_chars, verbose=False):
     # Implementação da decodificação PPM (não fornecida no código original)
     freq_dict = {}
     

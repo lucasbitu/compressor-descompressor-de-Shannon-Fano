@@ -2,7 +2,7 @@ import string
 from typing import Dict, List
 
 from models.context import Context
-from utils.encoder import decodificar_ppm  # Importando a função
+from utils.encoder import codificar_ppm  # Importando a função
 
 class PPMModel:
     """Modelo principal do PPM (Prediction by Partial Matching)."""
@@ -50,7 +50,7 @@ class PPMModel:
         if not context_stack:
             # Caso especial para o primeiro caractere
             # Codifica o caractere no contexto -1
-            encoded_bits = decodificar_ppm(self.structure, -1, "NO_CONTEXT", char, self.ignore_chars, False)
+            encoded_bits = codificar_ppm(self.structure, -1, "NO_CONTEXT", char, self.ignore_chars, False)
             if encoded_bits:
                 # Calcula a probabilidade como tupla (numerador, denominador)
                 context = self.get_context(-1, "NO_CONTEXT") # pega o contexto -1
@@ -79,7 +79,7 @@ class PPMModel:
                 if context.contains(char): # se o caractere está no contexto
                     if k == -1: # se o contexto é -1
                         # Codifica o caractere no contexto -1
-                        encoded_bits = decodificar_ppm(self.structure, -1, "NO_CONTEXT", char, {}, False)
+                        encoded_bits = codificar_ppm(self.structure, -1, "NO_CONTEXT", char, {}, False)
                         if encoded_bits:
                             # Calcula a probabilidade como tupla (numerador, denominador)
                             numerador = context.char_counts[char]
@@ -92,7 +92,7 @@ class PPMModel:
                     else: # se o contexto não é -1
                         if not element_found:
                             # Codifica o caractere no contexto atual
-                            encoded_bits = decodificar_ppm(self.structure, k, context_str, char, self.ignore_chars, False)
+                            encoded_bits = codificar_ppm(self.structure, k, context_str, char, self.ignore_chars, False)
                             if encoded_bits:
                                 # Calcula a probabilidade como tupla (numerador, denominador)
                                 numerador = context.char_counts[char]
@@ -108,7 +108,7 @@ class PPMModel:
                         if len(context.char_counts): 
                             if not element_found:
                                 # Codifica o caractere de escape (ro)
-                                escape_bits = decodificar_ppm(self.structure, k, context_str, self.esc_symbol, self.ignore_chars, False)
+                                escape_bits = codificar_ppm(self.structure, k, context_str, self.esc_symbol, self.ignore_chars, False)
                                 if escape_bits:
                                     # Calcula a probabilidade para o símbolo de escape
                                     numerador = context.char_counts.get(self.esc_symbol, 0)
