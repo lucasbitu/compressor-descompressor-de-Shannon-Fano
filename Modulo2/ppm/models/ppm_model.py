@@ -70,11 +70,11 @@ class PPMModel:
                     context_str = "NO_CONTEXT"
                 
                 context = self.get_context(k, context_str)
-                
+                print(f"Contexto: {context.char_counts}")
                 if context.contains(char):
                     if k == -1:
                         # Codifica o caractere no contexto -1
-                        encoded_bits = decodificar_ppm(self.structure, -1, "NO_CONTEXT", char, self.ignore_chars, False)
+                        encoded_bits = decodificar_ppm(self.structure, -1, "NO_CONTEXT", char, {}, False)
                         if encoded_bits:
                             self.encoded_bits.append((char, -1, "NO_CONTEXT", encoded_bits))
                             if self.verbose:
@@ -94,26 +94,28 @@ class PPMModel:
                         context.add_character(char)
                 else:
                     if k != -1:
-                        # Caracteres que devem ser ignorados na codificação
-                        characters = {c for c in context.get_characters() if c != self.esc_symbol}
-                        if self.verbose:
-                            print(f"Contexto caracteres: {characters}")
+                        if len(context.char_counts):
+                            if not element_found:
+                                # Codifica o caractere de escape (ro)
+                                escape_bits = decodificar_ppm(self.structure, k, context_str, self.esc_symbol, self.ignore_chars, False)
+                                if escape_bits:
+                                    self.encoded_bits.append((self.esc_symbol, k, context_str, escape_bits))
+                                    if self.verbose:
+                                        print(f"Codificando escape '{self.esc_symbol}' no contexto {k}:{context_str} com bits: {escape_bits}")
                         
-                        if characters:
-                            self.ignore_chars.update(characters)
-                        
-                        if not element_found:
-                            # Codifica o caractere de escape (ro)
-                            escape_bits = decodificar_ppm(self.structure, k, context_str, self.esc_symbol, self.ignore_chars, False)
-                            if escape_bits:
-                                self.encoded_bits.append((self.esc_symbol, k, context_str, escape_bits))
-                                if self.verbose:
-                                    print(f"Codificando escape '{self.esc_symbol}' no contexto {k}:{context_str} com bits: {escape_bits}")
-                        
+                            # Caracteres que devem ser ignorados na codificação
+                            characters = {c for c in context.get_characters() if c != self.esc_symbol}
+                            if self.verbose:
+                                print(f"Contexto caracteres: {characters}")
+                            
+                            if characters:
+                                self.ignore_chars.update(characters)
+                               
                         # Adiciona escape symbol e o caractere
                         context.add_character(self.esc_symbol)
                         context.add_character(char)
                         
+                        # verifica se o contexto está completo para poder remover ro
                         if self.is_context_complete(context):
                             context.remove_character(self.esc_symbol)
     

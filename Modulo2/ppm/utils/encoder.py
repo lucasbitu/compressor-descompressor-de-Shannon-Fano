@@ -62,7 +62,7 @@ def huffman_encoding(frequency_dict, verbose=True):
         return {}
     
     tree_root = build_huffman_tree(frequency_dict, verbose)
-    codes = generate_huffman_codes(tree_root)
+    codes = generate_huffman_codes(tree_root, "", {})
     return codes
 
 def decodificar_ppm(ppm_structure, k, context, char, ignore_chars, verbose=False):
