@@ -3,14 +3,28 @@ import math
 from collections import defaultdict
 
 class Node:
+    def __init__(self, char, freq, order):
+        self.char = char
+        self.freq = freq
+        self.order = order  # Indica a ordem alfabética
+        self.left = None
+        self.right = None
+    
+    def __lt__(self, other):
+        # Primeiro, ordenamos pela frequência (menor primeiro)
+        if self.freq != other.freq:
+            return self.freq < other.freq
+        # Se as frequências forem iguais, usamos a ordem alfabética
+        return self.order > other.order
+
+'''
+class Node:
     def __init__(self, char, freq):
         self.char = char
         self.freq = freq
         self.left = None
         self.right = None
-    
-    def __lt__(self, other):
-        return self.freq < other.freq
+'''
 
 def equiprovable_huffman(frequency_dict):
     # Ordenar as chaves alfabéticas, mas sem considerar o cedilha primeiro
@@ -29,25 +43,60 @@ def equiprovable_huffman(frequency_dict):
 
 def build_huffman_tree(frequency_dict, verbose=True):
     # Ordenando o dicionário primeiro por cedilha, depois alfabeticamente e, por fim, pela frequência
-    sorted_items = sorted(frequency_dict.items(), key=lambda x: (x[0], x[1])) 
-    heap = [Node(char, freq) for char, freq in sorted_items]
+    sorted_items = sorted(frequency_dict.items(), key=lambda x: x[1])
+    print(f"Lista de nós antes da construção da árvore depois do sort por frequencia: {sorted_items}")
+    sorted_items = sorted(sorted_items, key=lambda x: x[0], reverse=True)
+    print(f"Lista de nós antes da construção da árvore depois do sort por alfabeto: {sorted_items}")
+    heap = [Node(char, freq, char) for char, freq in sorted_items]
     heapq.heapify(heap)
     
     if verbose:
         print(f"Lista de nós antes da construção da árvore: {[f'({node.char}, {node.freq})' for node in heap]}")    
 
     while len(heap) > 1:
-        left = heapq.heappop(heap)
         right = heapq.heappop(heap)
-        merged = Node(None, left.freq + right.freq)
+        left = heapq.heappop(heap)
+        merged = Node(None, left.freq + right.freq, min(left.order, right.order))
         merged.left = left
         merged.right = right
         heapq.heappush(heap, merged)
         
         if verbose:
             print(f"Unindo '{left.char}' e '{right.char}' com frequências {left.freq} e {right.freq} para formar '{merged.char}' com frequência {merged.freq}")
-
+            #print(f"heap apos alteracao: {[f'({node.char}, {node.freq})' for node in heap]}") 
     return heap[0]
+
+'''
+def stable_sort(lst):
+    """ Ordenação estável por frequência crescente e ordem alfabética ('ç' antes de 'a'). """
+    return sorted(lst, key=lambda x: (x[1], x[0] is None, -ord(x[0]) if x[0] is not None else float('inf')))
+
+def build_huffman_tree(frequency_dict, verbose):
+    # Criar uma lista de nós e ordenar por frequência (crescendo), mantendo ordem alfabética
+    nodes = [(char, freq, Node(char, freq)) for char, freq in frequency_dict.items()]
+    nodes = stable_sort(nodes)  # Ordenação inicial
+    
+    print(f"Lista de nós antes da construção da árvore: {[f'({node[0]}, {node[1]})' for node in nodes]}")
+
+    while len(nodes) > 1:
+        # Pegamos os dois primeiros elementos (menores frequências)
+        (char1, freq1, right) = nodes.pop(0)
+        (char2, freq2, left) = nodes.pop(0)
+
+        # Criamos um novo nó que agrupa os dois
+        merged = Node(None, freq1 + freq2)
+        merged.left = left
+        merged.right = right
+
+        # Inserimos na posição correta para manter estabilidade
+        nodes.append((None, freq1 + freq2, merged))
+        nodes = stable_sort(nodes)  # Manter ordenação estável
+
+        print(f"Unindo '{char1}' e '{char2}' com frequências {freq1} e {freq2} para formar um nó com frequência {freq1 + freq2}")
+        print(f"Lista de nós após união: {[f'({node[0]}, {node[1]})' for node in nodes]}")
+    
+    return nodes[0][2]  # Retorna a raiz da árvore
+'''
 
 def generate_huffman_codes(node, prefix="", codebook={}):
     if node is not None:

@@ -205,17 +205,3 @@ class PPMDecoder:
                 
         # Se não conseguir decodificar, retorna vazio
         return ""
-    
-    def decode_from_model(self, model: PPMModel, encoded_data: List[Tuple[str, int, str, str, Tuple[int, int]]]) -> str:
-        """
-        Decodifica usando um modelo PPM pré-existente.
-        
-        Args:
-            model: Modelo PPM com a estrutura de dados.
-            encoded_data: Lista de tuplas com os dados codificados.
-            
-        Returns:
-            O texto decodificado.
-        """
-        self.structure = model.structure
-        return self.decode_sequence(encoded_data) 
