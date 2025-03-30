@@ -45,13 +45,18 @@ class PPMModel:
     def process_character(self, char: str, context_stack: List[str]) -> None:
         """Processa um caractere no modelo PPM."""
         element_found = False
-        
+        numerador = 0
+        denominador = 0
         if not context_stack:
             # Caso especial para o primeiro caractere
             # Codifica o caractere no contexto -1
             encoded_bits = decodificar_ppm(self.structure, -1, "NO_CONTEXT", char, self.ignore_chars, False)
             if encoded_bits:
-                self.encoded_bits.append((char, -1, "NO_CONTEXT", encoded_bits))
+                # Calcula a probabilidade como tupla (numerador, denominador)
+                context = self.get_context(-1, "NO_CONTEXT") # pega o contexto -1
+                numerador = context.char_counts[char]
+                denominador = sum(context.char_counts.values())
+                self.encoded_bits.append((char, -1, "NO_CONTEXT", encoded_bits, (numerador, denominador)))
                 if self.verbose:
                     print(f"Codificando '{char}' no contexto -1 com bits: {encoded_bits}")
             
@@ -71,35 +76,44 @@ class PPMModel:
                 
                 context = self.get_context(k, context_str)
                 print(f"Contexto: {context.char_counts}")
-                if context.contains(char):
-                    if k == -1:
+                if context.contains(char): # se o caractere está no contexto
+                    if k == -1: # se o contexto é -1
                         # Codifica o caractere no contexto -1
                         encoded_bits = decodificar_ppm(self.structure, -1, "NO_CONTEXT", char, {}, False)
                         if encoded_bits:
-                            self.encoded_bits.append((char, -1, "NO_CONTEXT", encoded_bits))
+                            # Calcula a probabilidade como tupla (numerador, denominador)
+                            numerador = context.char_counts[char]
+                            denominador = sum(count for c, count in context.char_counts.items() if c not in self.ignore_chars)
+                            self.encoded_bits.append((char, -1, "NO_CONTEXT", encoded_bits, (numerador, denominador)))
                             if self.verbose:
                                 print(f"Codificando '{char}' no contexto -1 com bits: {encoded_bits}")
                         
                         context.remove_character(char)
-                    else:
+                    else: # se o contexto não é -1
                         if not element_found:
                             # Codifica o caractere no contexto atual
                             encoded_bits = decodificar_ppm(self.structure, k, context_str, char, self.ignore_chars, False)
                             if encoded_bits:
-                                self.encoded_bits.append((char, k, context_str, encoded_bits))
+                                # Calcula a probabilidade como tupla (numerador, denominador)
+                                numerador = context.char_counts[char]
+                                denominador = sum(count for c, count in context.char_counts.items() if c not in self.ignore_chars)
+                                self.encoded_bits.append((char, k, context_str, encoded_bits, (numerador, denominador)))
                                 if self.verbose:
                                     print(f"Codificando '{char}' no contexto {k}:{context_str} com bits: {encoded_bits}")
                         
                         element_found = True
                         context.add_character(char)
-                else:
-                    if k != -1:
-                        if len(context.char_counts):
+                else: # se o caractere não está no contexto
+                    if k != -1: # se o contexto não é -1
+                        if len(context.char_counts): 
                             if not element_found:
                                 # Codifica o caractere de escape (ro)
                                 escape_bits = decodificar_ppm(self.structure, k, context_str, self.esc_symbol, self.ignore_chars, False)
                                 if escape_bits:
-                                    self.encoded_bits.append((self.esc_symbol, k, context_str, escape_bits))
+                                    # Calcula a probabilidade para o símbolo de escape
+                                    numerador = context.char_counts.get(self.esc_symbol, 0)
+                                    denominador = sum(count for c, count in context.char_counts.items() if c not in self.ignore_chars)
+                                    self.encoded_bits.append((self.esc_symbol, k, context_str, escape_bits, (numerador, denominador)))
                                     if self.verbose:
                                         print(f"Codificando escape '{self.esc_symbol}' no contexto {k}:{context_str} com bits: {escape_bits}")
                         
