@@ -8,7 +8,7 @@
             "name": "Run PPM main.py",
             "type": "debugpy",
             "request": "launch",
-            "program": "${workspaceFolder}/ppm/main.py",
+            "program": "${workspaceFolder}/ppm/main_decoder.py",
             "console": "integratedTerminal"
         }
     ]

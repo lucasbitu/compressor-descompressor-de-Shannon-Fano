@@ -2,29 +2,29 @@ import heapq
 import math
 from collections import defaultdict
 
-class Node:
-    def __init__(self, char, freq, order):
-        self.char = char
-        self.freq = freq
-        self.order = order  # Indica a ordem alfabética
-        self.left = None
-        self.right = None
+# class Node:
+#     def __init__(self, char, freq, order):
+#         self.char = char
+#         self.freq = freq
+#         self.order = order  # Indica a ordem alfabética
+#         self.left = None
+#         self.right = None
     
-    def __lt__(self, other):
-        # Primeiro, ordenamos pela frequência (menor primeiro)
-        if self.freq != other.freq:
-            return self.freq < other.freq
-        # Se as frequências forem iguais, usamos a ordem alfabética
-        return self.order > other.order
+#     def __lt__(self, other):
+#         # Primeiro, ordenamos pela frequência (menor primeiro)
+#         if self.freq != other.freq:
+#             return self.freq < other.freq
+#         # Se as frequências forem iguais, usamos a ordem alfabética
+#         return self.order > other.order
 
-'''
+
 class Node:
     def __init__(self, char, freq):
         self.char = char
         self.freq = freq
         self.left = None
         self.right = None
-'''
+
 
 def equiprovable_huffman(frequency_dict):
     # Ordenar as chaves alfabéticas, mas sem considerar o cedilha primeiro
@@ -41,32 +41,32 @@ def equiprovable_huffman(frequency_dict):
 
     return codes
 
-def build_huffman_tree(frequency_dict, verbose=True):
-    # Ordenando o dicionário primeiro por cedilha, depois alfabeticamente e, por fim, pela frequência
-    sorted_items = sorted(frequency_dict.items(), key=lambda x: x[1])
-    print(f"Lista de nós antes da construção da árvore depois do sort por frequencia: {sorted_items}")
-    sorted_items = sorted(sorted_items, key=lambda x: x[0], reverse=True)
-    print(f"Lista de nós antes da construção da árvore depois do sort por alfabeto: {sorted_items}")
-    heap = [Node(char, freq, char) for char, freq in sorted_items]
-    heapq.heapify(heap)
+# def build_huffman_tree(frequency_dict, verbose=True):
+#     # Ordenando o dicionário primeiro por cedilha, depois alfabeticamente e, por fim, pela frequência
+#     sorted_items = sorted(frequency_dict.items(), key=lambda x: x[1])
+#     print(f"Lista de nós antes da construção da árvore depois do sort por frequencia: {sorted_items}")
+#     sorted_items = sorted(sorted_items, key=lambda x: x[0], reverse=True)
+#     print(f"Lista de nós antes da construção da árvore depois do sort por alfabeto: {sorted_items}")
+#     heap = [Node(char, freq, char) for char, freq in sorted_items]
+#     heapq.heapify(heap)
     
-    if verbose:
-        print(f"Lista de nós antes da construção da árvore: {[f'({node.char}, {node.freq})' for node in heap]}")    
+#     if verbose:
+#         print(f"Lista de nós antes da construção da árvore: {[f'({node.char}, {node.freq})' for node in heap]}")    
 
-    while len(heap) > 1:
-        right = heapq.heappop(heap)
-        left = heapq.heappop(heap)
-        merged = Node(None, left.freq + right.freq, min(left.order, right.order))
-        merged.left = left
-        merged.right = right
-        heapq.heappush(heap, merged)
+#     while len(heap) > 1:
+#         right = heapq.heappop(heap)
+#         left = heapq.heappop(heap)
+#         merged = Node(None, left.freq + right.freq, min(left.order, right.order))
+#         merged.left = left
+#         merged.right = right
+#         heapq.heappush(heap, merged)
         
-        if verbose:
-            print(f"Unindo '{left.char}' e '{right.char}' com frequências {left.freq} e {right.freq} para formar '{merged.char}' com frequência {merged.freq}")
-            #print(f"heap apos alteracao: {[f'({node.char}, {node.freq})' for node in heap]}") 
-    return heap[0]
+#         if verbose:
+#             print(f"Unindo '{left.char}' e '{right.char}' com frequências {left.freq} e {right.freq} para formar '{merged.char}' com frequência {merged.freq}")
+#             #print(f"heap apos alteracao: {[f'({node.char}, {node.freq})' for node in heap]}") 
+#     return heap[0]
 
-'''
+
 def stable_sort(lst):
     """ Ordenação estável por frequência crescente e ordem alfabética ('ç' antes de 'a'). """
     return sorted(lst, key=lambda x: (x[1], x[0] is None, -ord(x[0]) if x[0] is not None else float('inf')))
@@ -96,7 +96,7 @@ def build_huffman_tree(frequency_dict, verbose):
         print(f"Lista de nós após união: {[f'({node[0]}, {node[1]})' for node in nodes]}")
     
     return nodes[0][2]  # Retorna a raiz da árvore
-'''
+
 
 def generate_huffman_codes(node, prefix="", codebook={}):
     if node is not None:
@@ -161,4 +161,8 @@ def decodificar_ppm(ppm_structure, k, context, code, ignore_chars, verbose=False
         freq_dict = {c: count for c, count in contexts_dict.items() if c not in ignore_chars}
         codes = huffman_encoding(freq_dict, verbose)
 
-    return codes, codes.get(code, None)
+    for chars, c in codes.items():
+        if code == c:
+            return codes, chars
+
+    return codes, None

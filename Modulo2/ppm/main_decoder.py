@@ -8,7 +8,7 @@ def main():
     verbose = True
     
     # String de bits codificados
-    encoded_data = "000000010111000111000011111"
+    encoded_data = "0001001100111000011010100"
     
     print(f"Bits codificados: {encoded_data}")
     

@@ -10,8 +10,13 @@ def main():
     
     encoded_sequence = app.run(INPUT_FILE)
     print(encoded_sequence)
+    string_encoded = ''
+    for i in encoded_sequence:
+        string_encoded += i[3]
+    print(string_encoded)
     # Acesso ao modelo para análise ou debug
     ppm_model = app.save_model_structure_to_file("model.json")
+    
     
     # Exemplo de como obter probabilidades de um contexto específico
     # if len(app.processor.discarded_chars) > 0:

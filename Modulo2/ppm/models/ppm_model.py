@@ -14,7 +14,7 @@ class PPMModel:
         self.esc_symbol = 'ç'  # Símbolo de escape (ro)
         self.encoded_bits = []  # Lista para armazenar os bits codificados
         self.verbose = verbose
-        #self.alphabet = string.ascii_lowercase + "_"
+        self.alphabet = string.ascii_lowercase + "_"
         self.alphabet = "abcdr"
         self.initialize_alphabet()
     
