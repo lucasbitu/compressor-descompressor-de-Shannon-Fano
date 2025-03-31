@@ -10,10 +10,12 @@ class PPMApp:
         self.k_max = k_max
         self.file_handler = FileHandler()
         self.processor = PPMProcessor(k_max)
+        self.text=""
     
     def run(self, filename: str) -> List[Any]:
         """Executa o processamento completo em um arquivo."""
-        text = self.file_handler.read_file(filename)
+        self.text = self.file_handler.read_file(filename)
+        text = self.text
         return self.processor.process_text(text) 
 
     def get_model_structure_json(self, indent: int = 4) -> str:

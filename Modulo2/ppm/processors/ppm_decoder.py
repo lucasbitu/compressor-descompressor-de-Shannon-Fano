@@ -8,7 +8,7 @@ import string
 class PPMDecoder:
     """Decodificador para o modelo PPM (Prediction by Partial Matching)."""
     
-    def __init__(self, k_max: int = 2, verbose: bool = True):
+    def __init__(self, k_max: int = 2, verbose: bool = False):
         """
         Inicializa o decodificador PPM.
         """
@@ -58,7 +58,7 @@ class PPMDecoder:
         context_stack.append(decoded_char)
         decoded_text += decoded_char
         
-        print(f"Contexto: {context_stack}")
+        # print(f"Contexto: {context_stack}")
         k_max = min(len(context_stack), self.k_def)
         restart_k = True
         

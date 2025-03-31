@@ -106,7 +106,7 @@ def generate_huffman_codes(node, prefix="", codebook={}):
         generate_huffman_codes(node.right, prefix + "1", codebook)
     return codebook
 
-def huffman_encoding(frequency_dict, verbose=True):
+def huffman_encoding(frequency_dict, verbose=False):
     if not frequency_dict:
         return {}
 
