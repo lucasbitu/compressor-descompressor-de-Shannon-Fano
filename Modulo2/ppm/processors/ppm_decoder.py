@@ -60,14 +60,10 @@ class PPMDecoder:
         
         # print(f"Contexto: {context_stack}")
         k_max = min(len(context_stack), self.k_def)
-        restart_k = True
-        
         cursor = x_bits
 
-        found_char = False
         k = k_max
         
-        ignore_chars = set()
         tamanho_codigo = len(encoded_data)
         cursor_end = cursor + 1
         while cursor_end <= tamanho_codigo:
@@ -104,6 +100,7 @@ class PPMDecoder:
                     while len(aux_dict) == 1:
                         aux_char = next(iter(aux_dict.keys()))
                         if aux_char == self.esc_symbol:
+                            k_max = k - 1
                             k-=1
                             if k > 0:
                                 context_str = ''.join(context_stack[-1:-(k+1):-1])
@@ -113,14 +110,17 @@ class PPMDecoder:
                             aux_dict = {c: count for c, count in context.char_counts.items() if c not in self.ignore_chars}
                         elif aux_char != None:
                             decoded_char = aux_char
-                            cursor_end = cursor
+                            
                             break
                     k_max = k
-                    cursor = cursor_end
-                    cursor_end = cursor + 1
+                    if decoded_char != 'ç' and len(aux_dict) == 1:
+                        pass
+                    else:
+                        cursor = cursor_end
+                        cursor_end = cursor + 1
 
                 if decoded_char != None and decoded_char != 'ç':
-                    k_max = min(len(context_stack)+1, self.k_def) 
+                    k_max = min(len(context_stack), self.k_def) 
                     
                     k = k_max
                     
@@ -132,11 +132,29 @@ class PPMDecoder:
                         context.add_character(decoded_char)
                         if len(context.char_counts) == len(self.alphabet) + 1:
                             context.remove_character(self.esc_symbol)
+                        
+                        '''
+                        if k-1 > 0:
+                            context_str = ''.join(context_stack[-1:-(k-1+1):-1])
+                        else:
+                            context_str = "NO_CONTEXT"
+                        context = self.get_context(k-1, context_str)
+
+                        if len(context.char_counts) == len(self.alphabet) + 1:
+                            context_str = ''.join(context_stack[-1:-(k+1):-1])
+                            context = self.get_context(k, context_str)
+                            context.remove_character(self.esc_symbol)
+                        '''
+                        
                         k -= 1
 
                     if k == 0:
                         context = self.get_context(k,"NO_CONTEXT") 
+                        if decoded_char not in context.char_counts:
+                            context.add_character(self.esc_symbol)
                         context.add_character(decoded_char)
+                        if len(context.char_counts) == len(self.alphabet) + 1:
+                            context.remove_character(self.esc_symbol)
                         #context.add_character(self.esc_symbol)
                         #if len(context.char_counts) == len(self.alphabet) + 1:
                         #    context.remove_character(self.esc_symbol)
@@ -145,13 +163,14 @@ class PPMDecoder:
                         context = self.get_context(k,"NO_CONTEXT")
                         if decoded_char in context.char_counts:
                             context.remove_character(decoded_char)
+                            '''
                             if len(context.char_counts) == 0:    
                                 context = self.get_context(0,"NO_CONTEXT")
                                 context.remove_character(self.esc_symbol)
                             else:
                                 context = self.get_context(0,"NO_CONTEXT")
                                 context.add_character(self.esc_symbol)
-
+                            '''
                     '''
                     if k == -1:
                         context.remove_character(decoded_char)
