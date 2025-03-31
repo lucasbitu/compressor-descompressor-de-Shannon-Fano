@@ -1,5 +1,10 @@
 from app import PPMApp
 import time
+from processors.ppm_processor import PPMProcessor
+from processors.ppm_decoder import PPMDecoder
+from utils.file_handler import write_string_to_file, FileHandler
+
+bits_extra = 0
 
 
 def comprimir_texto(codigo_binario):
@@ -45,7 +50,7 @@ def main():
     inicio = time.time()
     encoded_sequence = app.run(INPUT_FILE)
     fim = time.time()
-    print(encoded_sequence)
+    # print(encoded_sequence)
     string_encoded = ''
     entropia = 0
     # tamanho da mensagem original
@@ -63,10 +68,10 @@ def main():
     codigo_descomprimido = ler_arquivo_comprimido(bits_extra)
     # print(f"encoded depois da descompressão: {codigo_descomprimido}")
 
-    if string_encoded == codigo_descomprimido:
-        print("A descompreção é IGUAL ao código comprimido")
-    else:
-        print("A descompreção é DIFERENTE ao código comprimido")
+    # if string_encoded == codigo_descomprimido:
+    #     print("A descompreção é IGUAL ao código comprimido")
+    # else:
+    #     print("A descompreção é DIFERENTE ao código comprimido")
 
     print(f"para k: {K_MAX}")
 
@@ -82,5 +87,36 @@ def main():
     ppm_model = app.save_model_structure_to_file("model.json")
 
 
+def main_decoder():
+    # Parâmetros
+    k_max = 5
+    verbose = False
+
+    filename = '/Users/lucas/OneDrive/Documentos/lucas/pdi/ITI/PrimeiroProjetoITI/Modulo2/ppm/data/MemoriasPostumas_preprocessado_.txt'
+
+    file = FileHandler()
+
+    text = ler_arquivo_comprimido(bits_extra)
+    # print(text)
+
+    # Decodifica os dados
+    inicio = time.time()
+    decoder = PPMDecoder(k_max, verbose)
+    decoded_text = decoder.decode_sequence(text)
+    fim = time.time()
+
+    # print("\n--- Resultado ---")
+    # print(f"Texto decodificado: {decoded_text}")
+
+    # tempo de compressão
+    print(f"Tempo de descompressão: {fim - inicio:.4f} segundos")
+
+    # Escreve o resultado em um arquivo (opcional)
+    file_handler = FileHandler()
+    file_handler.write_file(
+        '/Users/lucas/OneDrive/Documentos/lucas/pdi/ITI/PrimeiroProjetoITI/Modulo2/ppm/data/MemoriasPostumas_preprocessado_descomprimido.txt', decoded_text)
+
+
 if __name__ == "__main__":
     main()
+    main_decoder()
