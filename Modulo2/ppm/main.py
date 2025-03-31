@@ -3,7 +3,7 @@ from app import PPMApp
 def main():
     # Valores configuráveis
     K_MAX = 1
-    INPUT_FILE = '/Users/moises/Documents/iti/Modulo2/ppm/data/abracadabra.txt'
+    INPUT_FILE = 'G:/Code/compressor-descompressor-de-Shannon-Fano/Modulo2/ppm/data/abracadabra.txt'
     
     # Criação e execução da aplicação
     app = PPMApp(K_MAX)
@@ -11,8 +11,12 @@ def main():
     encoded_sequence = app.run(INPUT_FILE)
     print(encoded_sequence)
     string_encoded = ''
+    letras = ''
     for i in encoded_sequence:
         string_encoded += i[3]
+    for i in encoded_sequence:
+        letras += i[0]
+    print(letras)
     print(string_encoded)
     # Acesso ao modelo para análise ou debug
     ppm_model = app.save_model_structure_to_file("model.json")
