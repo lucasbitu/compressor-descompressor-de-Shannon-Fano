@@ -5,7 +5,7 @@ from models.ppm_model import PPMModel
 class PPMProcessor:
     """Gerencia o processamento do texto usando o modelo PPM."""
     
-    def __init__(self, k_max: int = 2, verbose: bool = True):
+    def __init__(self, k_max: int = 2, verbose: bool = False):
         self.model = PPMModel(k_max, verbose)
         self.discarded_chars = []  # Pilha de caracteres
         self.encoded_sequence = []  # Sequência codificada
@@ -26,7 +26,8 @@ class PPMProcessor:
         self.discarded_chars.insert(0, char)
         
         if self.verbose:
-            print("Array descartados:", self.discarded_chars)
+            # print("Array descartados:", self.discarded_chars)
+            pass
         
         # Limpa os caracteres ignorados
         self.model.ignore_chars.clear()

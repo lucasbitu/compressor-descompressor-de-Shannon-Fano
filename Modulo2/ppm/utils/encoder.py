@@ -76,7 +76,7 @@ def build_huffman_tree(frequency_dict, verbose):
     nodes = [(char, freq, Node(char, freq)) for char, freq in frequency_dict.items()]
     nodes = stable_sort(nodes)  # Ordenação inicial
     
-    print(f"Lista de nós antes da construção da árvore: {[f'({node[0]}, {node[1]})' for node in nodes]}")
+    # print(f"Lista de nós antes da construção da árvore: {[f'({node[0]}, {node[1]})' for node in nodes]}")
 
     while len(nodes) > 1:
         # Pegamos os dois primeiros elementos (menores frequências)
@@ -92,8 +92,8 @@ def build_huffman_tree(frequency_dict, verbose):
         nodes.append((None, freq1 + freq2, merged))
         nodes = stable_sort(nodes)  # Manter ordenação estável
 
-        print(f"Unindo '{char1}' e '{char2}' com frequências {freq1} e {freq2} para formar um nó com frequência {freq1 + freq2}")
-        print(f"Lista de nós após união: {[f'({node[0]}, {node[1]})' for node in nodes]}")
+        # print(f"Unindo '{char1}' e '{char2}' com frequências {freq1} e {freq2} para formar um nó com frequência {freq1 + freq2}")
+        # print(f"Lista de nós após união: {[f'({node[0]}, {node[1]})' for node in nodes]}")
     
     return nodes[0][2]  # Retorna a raiz da árvore
 
@@ -106,7 +106,7 @@ def generate_huffman_codes(node, prefix="", codebook={}):
         generate_huffman_codes(node.right, prefix + "1", codebook)
     return codebook
 
-def huffman_encoding(frequency_dict, verbose=True):
+def huffman_encoding(frequency_dict, verbose=False):
     if not frequency_dict:
         return {}
 

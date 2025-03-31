@@ -27,8 +27,8 @@ def preprocess_text(file_path, output_path):
 
 
 # Caminhos dos arquivos de entrada e saída
-input_file = "data/MemoriasPostumas.txt"
-output_file = "data/MemoriasPostumas_preprocessado.txt"
+input_file = "/Users/lucas/OneDrive/Documentos/lucas/pdi/ITI/PrimeiroProjetoITI/Modulo2/ppm/data/MemoriasPostumas.txt"
+output_file = "/Users/lucas/OneDrive/Documentos/lucas/pdi/ITI/PrimeiroProjetoITI/Modulo2/ppm/data/MemoriasPostumas_preprocessado.txt"
 
 # Executar pré-processamento
 preprocess_text(input_file, output_file)
